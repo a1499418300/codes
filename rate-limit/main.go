@@ -9,10 +9,10 @@ import (
 )
 
 var limit = rate.Every(time.Second * 2)
-var r = rate.NewLimiter(limit, 10)
+var r = rate.NewLimiter(limit, 1)
 
 func WaitN(ctx context.Context, i int) {
-	if err := r.WaitN(ctx, 2); err != nil {
+	if err := r.WaitN(ctx, 1); err != nil {
 		log.Fatalf("等待发生错误：%v", err)
 	}
 	log.Printf("hello %d", i)
